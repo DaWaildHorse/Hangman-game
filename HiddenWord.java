@@ -15,12 +15,25 @@ public class HiddenWord extends JFrame {
         Random random = new Random();
         int randomNumber = random.nextInt(7);
         HiddenWord = WordOptions[randomNumber];
+        GridBagLayoutDemo.CheckWordLength();
     }
 
     public void CheckLetter(String input) {
         System.out.println(input);
         if (HiddenWord.contains(input)) {
             JOptionPane.showMessageDialog(frame, "The letter '" + input + "' is contained in the word.");
+            char in = input.charAt(0);
+            for(int i=0; i<HiddenWord.length(); i++ ){
+                if(HiddenWord.charAt(i)==in){
+                    System.out.println(i);
+                    System.out.println("escondida " + HiddenWord);
+                    int index = i;
+                    char[] myNameChars = GridBagLayoutDemo.UnderScoreWord.toCharArray();
+                    myNameChars[index] = in;
+                    GridBagLayoutDemo.UnderScoreWord = String.valueOf(myNameChars);
+                    GridBagLayoutDemo.Hidden.setText(GridBagLayoutDemo.UnderScoreWord);
+                }
+            }
         } else {  
             JOptionPane.showMessageDialog(frame, "The letter '" + input + "' is not contained in the word."); 
             GridBagLayoutDemo.lifes--;

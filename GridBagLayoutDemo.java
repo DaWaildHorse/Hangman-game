@@ -2,10 +2,8 @@ package Hangman;
 import java.awt.*;
 
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 
 public class GridBagLayoutDemo {
 	final static boolean shouldFill = true;
@@ -14,6 +12,9 @@ public class GridBagLayoutDemo {
 	static int lifes = 8;
 	static JLabel label = new JLabel();
 	public static ImageIcon card; 
+	static JLabel Hidden = new JLabel();
+	static String UnderScoreWord = new String();
+	
 
     public static void addComponentsToPane(Container pane) {
         if (RIGHT_TO_LEFT) {
@@ -21,7 +22,7 @@ public class GridBagLayoutDemo {
         }
 		HiddenWord selection = new HiddenWord();
         selection.hiddenWordSelection();
-
+		System.out.println(HiddenWord.HiddenWord);
 		pane.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		
@@ -41,6 +42,15 @@ public class GridBagLayoutDemo {
 		c.gridy = 1;
 		pane.add(text, c);
 
+		
+		Hidden = new JLabel(UnderScoreWord);
+		c.fill = GridBagConstraints.HORIZONTAL;
+		Hidden.setHorizontalAlignment(JLabel.CENTER);
+		c.weightx = 20;
+		c.gridx = 1;
+		c.gridy = 4;
+		pane.add(Hidden, c);
+		
 		InputField input = new InputField();
 		c.fill = GridBagConstraints.HORIZONTAL;
 		c.weightx = 0.2;
@@ -67,7 +77,14 @@ public class GridBagLayoutDemo {
 		pane.add(label, c);
 	}
 
-    
+    public static void CheckWordLength(){
+		for(int i=0; i<HiddenWord.HiddenWord.length(); i++ ){
+			UnderScoreWord += "_";
+		}
+		System.out.println(UnderScoreWord);
+		
+	}
+	
     private static void createAndShowGUI() {
         //Create and set up the window.
         JFrame frame = new JFrame("GridBagLayoutDemo");
