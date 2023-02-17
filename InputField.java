@@ -1,8 +1,6 @@
 package Hangman;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
 
 
 public class InputField extends JFrame{
@@ -10,7 +8,7 @@ public class InputField extends JFrame{
 
     //constructor
     InputField(){
-        this.field = new JTextField(10);
+        this.field = new JTextField(5);
 
     }   
 }

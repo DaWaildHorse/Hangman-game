@@ -5,15 +5,16 @@ import java.awt.*;
 import java.util.*;
 
 public class HiddenWord extends JFrame {
-    String[] WordOptions = new String[] {"Caleidoscopio", "Arroz" , "Chocolate" , "Avestruz" , "Cacahaute" , "Nopal" , "Pollo" , "Programar"};
+    String[] WordOptions = new String[] {"caleidoscopio", "arroz" , "chocolate" , "avestruz" , "cacahaute" , "nopal" , "pollo" , "programar" , "guayaba"};
     static Component frame;
     static String HiddenWord = new String();
+    public static HiddenWord TRACKING;
     
     
     
     public void hiddenWordSelection(){
         Random random = new Random();
-        int randomNumber = random.nextInt(7);
+        int randomNumber = random.nextInt(9);
         HiddenWord = WordOptions[randomNumber];
         GridBagLayoutDemo.CheckWordLength();
     }
